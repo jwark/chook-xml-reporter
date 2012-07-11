@@ -1,0 +1,19 @@
+{
+  "author": "Justin Wark <justinwark@gmail.com>",
+  "name": "chook-xml-reporter",
+  "description": "JUnit compatible XML reporter of tests for [chook](https://github.com/markdalgleish/chook) - the headless, framework-agnostic unit test runner. The results are intended to be used by Continuous Integration Servers, such as Jenkins.",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "main": "lib/index",
+  "engines": {
+    "node": "~0.6.11"
+  },
+  "dependencies": {
+    "xmlbuilder": "~0.3.1"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
