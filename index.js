@@ -32,7 +32,7 @@ exports.reporter = function(outputXmlFile) {
 				var suitesEl = doc.begin('testsuites', {'version': '1.0', 'encoding': 'UTF-8'});
 
 				flattenedTests.forEach(function(test) {
-					var testcaseEl = suitesEl.ele('testcase', {classname: test.path, name: test.name, time: test.duration});
+					var testcaseEl = suitesEl.ele('testcase', {classname: test.path, name: test.name, time: (test.duration/1000)});
 					if (test.error) {
 						var elName = test.status === 'fail' ? 'failure' : 'error';
 						testcaseEl.ele(elName, {type: test.error.name || test.status}, test.error.message);
