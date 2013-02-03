@@ -26,10 +26,7 @@ exports.reporter = function(outputXmlFile) {
 				}
 				getTestTimes([], status.suites);
 
-				var doc = builder.create();
-
-
-				var suitesEl = doc.begin('testsuites', {'version': '1.0', 'encoding': 'UTF-8'});
+				var suitesEl = builder.create('testsuites', {'version': '1.0', 'encoding': 'UTF-8'});
 
 				flattenedTests.forEach(function(test) {
 					var testcaseEl = suitesEl.ele('testcase', {classname: test.path, name: test.name, time: (test.duration/1000)});
@@ -38,9 +35,8 @@ exports.reporter = function(outputXmlFile) {
 						testcaseEl.ele(elName, {type: test.error.name || test.status}, test.error.message);
 					}
 				});
-				//console.log(doc.toString({ pretty: true }));
 				var xmlOutputStream = fs.createWriteStream(outputXmlFile, {'flags': 'w'});
-				xmlOutputStream.write(doc.toString({ pretty: true }));
+				xmlOutputStream.write(suitesEl.end({ pretty: true }));
 				xmlOutputStream.end();
 			});
 		}
